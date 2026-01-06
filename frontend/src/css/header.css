@@ -1,0 +1,25 @@
+/* Header styles */
+.MuiAppBar-root.header-appbar {
+    background: linear-gradient(90deg, #663469 0%, #8D567F 100%) !important; /* Swapped gradient direction */
+    color: #FCF3F1;
+    backdrop-filter: blur(5px) !important;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+.header-title {
+    flex-grow: 1;
+    font-weight: 600;
+    color: #FCF3F1;
+}
+
+.header-button {
+    color: #FCF3F1;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.header-button:hover {
+    color: #D7B5BA;
+}

@@ -1,0 +1,13 @@
+/* variables.css */
+:root {
+    --gradient-start: #8D567F;
+    --gradient-end: #663469;
+    --gradient-dark-start: #351944;
+    --gradient-dark-end: #10081F;
+    --background-light: #FCF3F1;
+    --text-color-light: #FCF3F1;
+    --text-color-dark: #8D567F;
+    --text-hover: #D7B5BA;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --blur-effect: 5px;
+}
