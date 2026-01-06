@@ -1,45 +1,44 @@
-version: '3.8'
-name: docker
+version: "3.8"
 
 services:
   lola-db:
     image: mongo:latest
-    container_name: lola-db
-    ports:
-      - 27018:27017 # Expose MongoDB for local access if needed
     volumes:
       - lola-data:/data/db
     networks:
-      - lola-api
+      - lola-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
   lola-api:
     image: swiip23/lola-api:latest
-    container_name: lola-api
     ports:
-      - 5001:5000 # Expose API on localhost
+      - "5001:5000"
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://lola-db:27017/ # Use correct service name as host
-    depends_on:
-      - lola-db
+      SPRING_DATA_MONGODB_URI: mongodb://lola-db:27017/
     networks:
-      - lola-api
+      - lola-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
   lola-frontend:
     image: swiip23/lola-frontend:latest
-    container_name: lola-frontend
     ports:
-      - 3000:3000 # Expose React frontend on localhost:3000
-    depends_on:
-      - lola-api
+      - "3000:3000"
     networks:
-      - lola-frontend
+      - lola-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
 volumes:
   lola-data:
-    driver: local
 
 networks:
-  lola-api:
-    driver: bridge
-  lola-frontend:
-    driver: bridge
+  lola-network:
+    driver: overlay
