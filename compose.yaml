@@ -26,7 +26,7 @@ services:
         condition: on-failure
 
   lola-frontend:
-    image: swiip23/lola-frontend:latest
+    image: williampjt/lola-frontend:latest
     ports:
       - "3000:3000"
     networks:

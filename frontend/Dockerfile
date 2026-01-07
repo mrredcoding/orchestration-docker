@@ -3,7 +3,7 @@ FROM node:18 AS build
 WORKDIR /app
 
 ARG API_BASE_URL
-ENV API_BASE_URL=${API_BASE_URL}
+ENV REACT_APP_API_BASE_URL=${API_BASE_URL}
 
 COPY package*.json ./
 RUN npm install
@@ -15,6 +15,6 @@ FROM nginx:alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
